@@ -21,7 +21,10 @@ module.exports = {
     'no-confusing-arrow': 0,
     'no-unused-expressions': 0,
     'no-unused-vars': 1,
+    'no-use-before-define': 0,
+    'consistent-return': 0,
     'max-len': 0,
     'jsx-a11y/label-has-associated-control': 0,
+    'react/jsx-props-no-spreading': 0
   },
 };

@@ -1,5 +1,5 @@
 {
-  "name": "react-bootstrap-2019",
+  "name": "mybea-front",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -30,8 +30,6 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.1.2",
-    "husky": "^3.0.9",
-    "lint-staged": "^9.4.2",
     "react-app-rewired": "^2.1.3"
   },
   "scripts": {
@@ -41,19 +39,7 @@
     "test:watch": "react-app-rewired test",
     "test": "cross-env CI=true react-app-rewired test --env=jsdom",
     "eject": "react-app-rewired eject",
-    "lint": "npx eslint --fix src/**/*.js[x]",
-    "precommit": "lint-staged && yarn test"
-  },
-  "lint-staged": {
-    "src/**/*.js[x]": [
-      "yarn lint",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn precommit"
-    }
+    "lint": "npx eslint --fix src/**/*.js[x]"
   },
   "browserslist": {
     "production": [
