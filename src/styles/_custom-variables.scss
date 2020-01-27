@@ -1,42 +1,6 @@
 // Custom variables
 
-// Colors
-$raspberry: #e53b3b;
-$raspberry-dark: #d33131;
-$raspberry-light: #ff9797;
-
-$blueberry: #14d4f4;
-$blueberry-dark: #1cb0f6;
-$blueberry-light: #bce9ff;
-
-$banana: #ffc300;
-$banana-dark: #ffb020;
-$banana-light: #fff277;
-
-$kiwi: #8ee000;
-$kiwi-dark: #7ac70c;
-$kiwi-light: #bff199;
-
-$jelly: #a560eb;
-$jelly-dark: #8549ba;
-$jelly-light: #ca94ff;
-
-$pumpkin: #ff9400;
-$pumpkin-dark: #fa811b;
-$pumpkin-light: #ffcf7a;
-
-$licorice: #777777;
-$licorice-dark: #4c4c4c;
-$licorice-light: #afafaf;
-
-$cloud: #dddddd;
-$cloud-dark: #cfcfcf;
-$cloud-light: #f0f0f0;
-
-$creme: #ffffff;
-$coal: #000000;
-
-// Other
+// Sizings
 $pm-size-small: 0.5rem;
 $pm-size: 1rem;
 $pm-size-medium: 2rem;
@@ -46,48 +10,39 @@ $gap-size: 1rem;
 $gap-size-small: 0.5rem;
 $gap-size-large: 2rem;
 
-$lighter: 40;
-$lightest: 80;
-
 $radius: 10px;
 $radius-small: 4px;
 $radius-round: 290486px;
 
-$primary-background-light: lighten($blueberry-light, 8%);
-$primary-text-dark: $blueberry-dark;
-$danger-background-light: lighten($raspberry-light, 16%);
-$danger-text-dark: $raspberry-dark;
-$warning-background-light: lighten($banana-light, 16%);
-$warning-text-dark: $banana-dark;
-$success-background-light: lighten($kiwi-light, 12%);
-$success-text-dark: $kiwi-dark;
-
-// Bulma initial variables override
+/** 
+ * Bulma initial variables override
+**/
 
 // Fonts
-$family-sans-serif: 'OpenSans', sans-serif;
+$family-sans-serif: 'Raleway', sans-serif;
 
 // Colors
-$grey-dark: $cloud;
-$grey-light: $cloud-light;
-$primary: $blueberry;
-$danger: $raspberry;
-$success: $kiwi;
-$white: $creme;
-$black: $coal;
-$light: $cloud-light;
-$dark: $licorice-dark;
-$info: $jelly;
-$link: $primary-text-dark;
-$warning: $banana;
+$primary: #4a69bd;
+$danger: #e55039;
+$success: #78e08f;
+$white: #fff;
+$black: #000;
+$light: #f4f4f4;
+$dark: #353535;
+$info: #60a3bc;
+$link: #6a89cc;
+$warning: #f6b93b;
+$grey-lighter: #ecf0f1;
+$grey-darker: #bdc3c7;
 
-// Bulma's component variables override
+/** 
+ * Bulma components variables override
+**/
 
 $body-overflow-y: auto;
-// $body-background-color: $cloud-light;
 
 $text: $dark;
-$text-light: $cloud-dark;
+$text-light: $light;
 
 $message-radius: $radius-small;
 $message-body-radius: $radius-small;
@@ -99,8 +54,8 @@ $notification-padding: 1rem 2rem 1rem 1.5rem;
 // Forms
 $control-border-width: 2px;
 $input-background-color: $white;
-$input-border-color: $cloud;
-$input-hover-border-color: $cloud-dark;
+$input-border-color: $grey-lighter;
+$input-hover-border-color: $grey-darker;
 $input-focus-color: $primary;
 $input-shadow: none;
 $input-focus-border-color: $primary;

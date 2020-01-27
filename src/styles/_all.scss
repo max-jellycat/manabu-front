@@ -1,16 +1,11 @@
 // Custom framework
-@import 'functions';
 @import 'custom-variables';
 @import 'mixins';
 @import 'sizings';
 @import 'positions';
-@import 'colors';
 @import 'globals';
 
 // Bulma
 @import '~bulma/bulma';
 @import '~bulma-extensions/bulma-checkradio/dist/css/bulma-checkradio';
 
-// Mixins
-@include is-lighter();
-@include is-darker();

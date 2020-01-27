@@ -9,10 +9,9 @@ h2.subtitle {
 a.button,
 button.button,
 input.button {
-  border-radius: $radius;
+  border-radius: $radius-small;
   font-weight: bold;
   @include transition(all 0.3s ease);
-  @include box-shadow;
 
   &.is-outlined {
     box-shadow: none;
