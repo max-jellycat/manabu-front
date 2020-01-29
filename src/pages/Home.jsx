@@ -1,5 +1,5 @@
 import React from 'react';
-import useRequireAuth from '../hooks/use-require-auth';
+import useRequireAuth from 'auth/hooks/use-require-auth';
 
 const Home = () => {
   const auth = useRequireAuth();

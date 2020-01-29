@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.scss';
 
 import Home from './pages/Home';
-import SignIn from './components/SignIn/SignIn';
-import SignUp from './components/SignUp/SignUp';
-import Alert from './components/Alert/Alert';
+import SignIn from './auth/components/SignIn/SignIn';
+import SignUp from './auth/components/SignUp/SignUp';
+import Alert from './common/components/Alert/Alert';
 
 const App = () => (
   <section className="section">

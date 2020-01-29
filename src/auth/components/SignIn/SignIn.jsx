@@ -1,38 +1,35 @@
 import React, { useContext } from 'react';
 import { Form } from 'react-final-form';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../hooks/use-auth';
-import FormInput from '../FormInput/FormInput';
 
-import AlertContext from '../../context/alert';
+import { useAuth } from 'auth/hooks/use-auth';
+import useRouter from 'common/hooks/use-router';
+import AlertContext from 'common/context/alert';
+import FormInput from 'common/components/FormInput/FormInput';
 
-const SignUp = () => {
-  const { signup } = useAuth();
+const SignIn = () => {
+  const router = useRouter();
+  const auth = useAuth();
   const { setAlert } = useContext(AlertContext);
 
-  const onSubmit = ({
-    name, email, password, passwordConfirm,
-  }) => {
-    if (password !== passwordConfirm) {
-      setAlert("Passwords don't match.", 'danger');
+  const onSubmit = ({ email, password }) => {
+    const errors = auth.signin(email, password);
+    if (!errors.length) {
+      setAlert('Login successful.', 'success');
+      router.push('/');
+    } else {
+      errors.forEach((e) => setAlert(e, 'danger'));
     }
   };
 
   return (
-    <section className="register-page">
+    <section className="login-page">
       <Form
         onSubmit={onSubmit}
-        initialValues={{
-          name: '', email: '', password: '', passwordConfirm: '',
-        }}
+        initialValues={{ email: '', password: '' }}
         render={({ handleSubmit, submitting, pristine }) => (
           <>
             <form onSubmit={handleSubmit}>
-              <FormInput
-                name="name"
-                placeholder="Name"
-                icon="user"
-              />
               <FormInput
                 type="email"
                 name="email"
@@ -46,21 +43,15 @@ const SignUp = () => {
                 icon="lock"
               />
               <FormInput
-                type="password"
-                name="password-confirm"
-                placeholder="Password Confirmation"
-                icon="check"
-              />
-              <FormInput
                 type="submit"
-                placeholder="Register"
-                icon="user-plus"
+                placeholder="Sign in"
+                icon="sign-in-alt"
                 disabled={submitting || pristine}
               />
             </form>
             <p className="mt-1">
               <span>Already have an account ? </span>
-              <Link to="/login" className="lead">Sign in here.</Link>
+              <Link to="/register" className="lead">Sign up here.</Link>
             </p>
           </>
         )}
@@ -69,4 +60,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;

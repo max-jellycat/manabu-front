@@ -32,7 +32,7 @@ const FormInput = ({
 
 FormInput.propTypes = {
   type: PropTypes.string,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   placeholder: PropTypes.string,
   icon: PropTypes.string,
   disabled: PropTypes.bool,
@@ -40,6 +40,7 @@ FormInput.propTypes = {
 
 FormInput.defaultProps = {
   type: 'text',
+  name: 'input',
   icon: '',
   placeholder: '',
   disabled: false,

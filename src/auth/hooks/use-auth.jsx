@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 
 const authContext = createContext();
 
-// Provider component that wraps your app and makes auth object ...
-// ... available to any child component that calls useAuth().
 export const AuthProvider = ({ children }) => {
   const auth = useProvideAuth();
   return <authContext.Provider value={auth}>{children}</authContext.Provider>;
@@ -16,18 +14,15 @@ AuthProvider.propTypes = {
   children: PropTypes.element.isRequired,
 };
 
-// Hook for child components to get the auth object ...
-// ... and re-render when it changes.
 export const useAuth = () => useContext(authContext);
 
-// Provider hook that creates auth object and handles state
 const useProvideAuth = () => {
   const [user, setUser] = useState(null);
+  let errors = [];
 
-  // Wrap any Firebase methods we want to use making sure ...
-  // ... to save the user to state.
   const signin = (email, password) => {
-    fetch('http://localhost:5000/users').then((res) => {
+    errors = [];
+    fetch(`${process.env.REACT_APP_API_URL}/users`).then((res) => {
       res.json()
         .then((users) => {
           const user = users.find((u) => u.email === email);
@@ -35,26 +30,49 @@ const useProvideAuth = () => {
             if (user.password === password) {
               setUser(user);
             } else {
-              return false;
+              errors.push('Invalid credentials.');
             }
           } else {
-            return false;
+            errors.push('User not found in database.');
           }
         })
-        .catch((err) => console.error(err));
-    });
+        .catch((err) => errors.push(err));
+    }).catch((err) => errors.push(err));
 
-    return true;
+    return errors;
   };
 
-  const signup = (email, password) => {};
+  const signup = ({ name, email, password }) => {
+    errors = [];
+    fetch(`${process.env.REACT_APP_API_URL}/users`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+        role: 'user',
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          res.json()
+            .then((user) => {
+              setUser(user);
+            })
+            .catch((err) => errors.push(err));
+        }
+      })
+      .catch((err) => errors.push(err));
+    return errors;
+  };
 
-  const signout = () => {};
+  const signout = () => {
+    setUser(null);
+  };
 
-  // Subscribe to user on mount
-  // Because this sets state in the callback it will cause any ...
-  // ... component that utilizes this hook to re-render with the ...
-  // ... latest auth object.
   useEffect(() => {
     const unsubscribe = (user) => {
       if (user) {
@@ -64,11 +82,9 @@ const useProvideAuth = () => {
       }
     };
 
-    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, []);
 
-  // Return the user object and auth methods
   return {
     user,
     signin,
