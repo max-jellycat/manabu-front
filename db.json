@@ -23,27 +23,6 @@
       "email": "partner@gmail.com",
       "password": "partner",
       "role": "partner"
-    },
-    {
-      "name": "Maxime Blanc",
-      "email": "maximeblanc84@gmail.com",
-      "password": "123456",
-      "role": "user",
-      "id": 5
-    },
-    {
-      "name": "Maxime Blanc",
-      "email": "maximeblanc84@gmail.com",
-      "password": "123456",
-      "role": "user",
-      "id": 6
-    },
-    {
-      "name": "Maxime Blanc",
-      "email": "maximeblanc84@gmail.com",
-      "password": "123456",
-      "role": "user",
-      "id": 7
     }
   ]
 }

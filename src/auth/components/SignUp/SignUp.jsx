@@ -1,15 +1,13 @@
 import React, { useContext } from 'react';
 import { Form } from 'react-final-form';
 import { Link } from 'react-router-dom';
-import { useAuth } from 'auth/hooks/use-auth';
-import useRouter from 'common/hooks/use-router';
+import { useAuth } from 'auth/context/use-auth';
 import FormInput from 'common/components/FormInput/FormInput';
 
 import AlertContext from 'common/context/alert';
 
 const SignUp = () => {
   const auth = useAuth();
-  const router = useRouter();
   const { setAlert } = useContext(AlertContext);
 
   const onSubmit = ({
@@ -21,7 +19,6 @@ const SignUp = () => {
       const errors = auth.signup({ name, email, password });
       if (!errors.length) {
         setAlert('You are now logged in.', 'success');
-        router.push('/');
       } else {
         errors.forEach((e) => setAlert(e, 'danger'));
       }

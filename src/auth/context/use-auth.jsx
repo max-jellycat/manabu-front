@@ -1,23 +1,17 @@
 import React, {
-  useState, useEffect, useContext, createContext,
+  useEffect, useContext, createContext,
 } from 'react';
 import PropTypes from 'prop-types';
+import createPersistedState from 'use-persisted-state';
+
+import useRouter from 'common/hooks/use-router';
 
 const authContext = createContext();
+const usePersistedState = createPersistedState('user');
 
 export const AuthProvider = ({ children }) => {
-  const auth = useProvideAuth();
-  return <authContext.Provider value={auth}>{children}</authContext.Provider>;
-};
-
-AuthProvider.propTypes = {
-  children: PropTypes.element.isRequired,
-};
-
-export const useAuth = () => useContext(authContext);
-
-const useProvideAuth = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = usePersistedState(null);
+  const router = useRouter();
   let errors = [];
 
   const signin = (email, password) => {
@@ -29,6 +23,7 @@ const useProvideAuth = () => {
           if (user) {
             if (user.password === password) {
               setUser(user);
+              router.push('/');
             } else {
               errors.push('Invalid credentials.');
             }
@@ -61,6 +56,7 @@ const useProvideAuth = () => {
           res.json()
             .then((user) => {
               setUser(user);
+              router.push('/');
             })
             .catch((err) => errors.push(err));
         }
@@ -73,24 +69,24 @@ const useProvideAuth = () => {
     setUser(null);
   };
 
-  useEffect(() => {
-    const unsubscribe = (user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(false);
-      }
-    };
-
-    return () => unsubscribe();
-  }, []);
-
-  return {
-    user,
-    signin,
-    signup,
-    signout,
-  };
+  useEffect(() => () => setUser(null), []);
+  return (
+    <authContext.Provider value={{
+      user,
+      signin,
+      signup,
+      signout,
+    }}
+    >
+      {children}
+    </authContext.Provider>
+  );
 };
+
+AuthProvider.propTypes = {
+  children: PropTypes.element.isRequired,
+};
+
+export const useAuth = () => useContext(authContext);
 
 export default useAuth;

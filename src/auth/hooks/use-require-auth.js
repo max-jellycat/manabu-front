@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import useRouter from 'common/hooks/use-router';
-import { useAuth } from './use-auth';
+import { useAuth } from 'auth/context/use-auth';
 
 const useRequireAuth = (redirectUrl = '/login') => {
   const auth = useAuth();
   const router = useRouter();
 
   useEffect(() => {
+    console.log(auth.user);
     if (!auth.user) {
       router.push(redirectUrl);
     }

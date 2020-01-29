@@ -3,15 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { AlertProvider } from './common/context/alert';
-import { AuthProvider } from './auth/hooks/use-auth';
-
 ReactDOM.render(
-  <AuthProvider>
-    <AlertProvider>
-      <App />
-    </AlertProvider>
-  </AuthProvider>,
+  <App />,
   document.getElementById('root'),
 );
 
