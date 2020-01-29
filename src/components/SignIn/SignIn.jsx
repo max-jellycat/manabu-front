@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Form } from 'react-final-form';
 import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../hooks/use-auth';
+import useRouter from '../../hooks/use-router';
+import AlertContext from '../../context/alert';
 import FormInput from '../FormInput/FormInput';
 
 const SignIn = () => {
-  const { signin } = useAuth();
-  const onSubmit = () => {};
+  const router = useRouter();
+  const auth = useAuth();
+  const { setAlert } = useContext(AlertContext);
+
+  const onSubmit = ({ email, password }) => {
+    const success = auth.signin(email, password);
+    if (success) {
+      setAlert('Login successful.', 'success');
+      router.push('/');
+    } else {
+      setAlert('Invalid credentials.', 'danger');
+    }
+  };
 
   return (
     <section className="login-page">

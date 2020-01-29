@@ -26,7 +26,26 @@ const useProvideAuth = () => {
 
   // Wrap any Firebase methods we want to use making sure ...
   // ... to save the user to state.
-  const signin = (email, password) => {};
+  const signin = (email, password) => {
+    fetch('http://localhost:5000/users').then((res) => {
+      res.json()
+        .then((users) => {
+          const user = users.find((u) => u.email === email);
+          if (user) {
+            if (user.password === password) {
+              setUser(user);
+            } else {
+              return false;
+            }
+          } else {
+            return false;
+          }
+        })
+        .catch((err) => console.error(err));
+    });
+
+    return true;
+  };
 
   const signup = (email, password) => {};
 
