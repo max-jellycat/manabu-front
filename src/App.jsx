@@ -10,23 +10,25 @@ import Home from './pages/Home';
 import SignIn from './auth/components/SignIn/SignIn';
 import SignUp from './auth/components/SignUp/SignUp';
 import Alert from './common/components/Alert/Alert';
+import Navbar from './common/components/Navbar/Navbar';
 
 const App = () => (
-  <section className="section">
-    <Router>
-      <AuthProvider>
-        <AlertProvider>
+
+  <Router>
+    <AuthProvider>
+      <AlertProvider>
+        <Navbar />
+        <section className="section">
           <Alert />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={SignIn} />
             <Route exact path="/register" component={SignUp} />
           </Switch>
-        </AlertProvider>
-      </AuthProvider>
-,
-    </Router>
-  </section>
+        </section>
+      </AlertProvider>
+    </AuthProvider>
+  </Router>
 );
 
 export default App;

@@ -1,0 +1,27 @@
+.navbar-brand {
+  width: $menu-size;
+  display: flex;
+  justify-content: center;
+
+  .navbar-item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    img {
+      max-height: auto;
+    }
+
+    .user-name {
+      font-weight: bold;
+    }
+  }
+}
+
+.navbar-item:first-child {
+  padding-left: 0;
+
+  button {
+    padding-left: 0;
+  }
+}

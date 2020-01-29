@@ -20,7 +20,7 @@ const SignIn = () => {
   };
 
   return (
-    <section className="login-page">
+    <section className="section login-page">
       <Form
         onSubmit={onSubmit}
         initialValues={{ email: '', password: '' }}

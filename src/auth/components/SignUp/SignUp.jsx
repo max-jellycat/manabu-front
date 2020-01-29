@@ -26,7 +26,7 @@ const SignUp = () => {
   };
 
   return (
-    <section className="register-page">
+    <section className="section register-page">
       <Form
         onSubmit={onSubmit}
         initialValues={{
