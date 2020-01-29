@@ -9,3 +9,5 @@
 @import '~bulma/bulma';
 @import '~bulma-extensions/bulma-checkradio/dist/css/bulma-checkradio';
 
+@include is-lighter();
+

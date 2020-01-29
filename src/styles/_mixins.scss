@@ -1,3 +1,56 @@
+@mixin is-lighter() {
+  .is-lighter {
+    &.is-primary {
+      background-color: lighten($primary, 20);
+      &.is-outlined {
+        border-color: lighten($primary, 20);
+        color: lighten($primary, 20);
+        &:hover {
+          background-color: lighten($primary, 20);
+          border-color: lighten($primary, 20);
+          color: #fff;
+        }
+      }
+    }
+    &.is-danger {
+      background-color: lighten($danger, 20);
+      &.is-outlined {
+        border-color: lighten($danger, 20);
+        color: lighten($danger, 20);
+        &:hover {
+          background-color: lighten($danger, 20);
+          border-color: lighten($danger, 20);
+          color: #fff;
+        }
+      }
+    }
+    &.is-warning {
+      background-color: lighten($warning, 20);
+      &.is-outlined {
+        border-color: lighten($warning, 20);
+        color: lighten($warning, 20);
+        &:hover {
+          background-color: lighten($warning, 20);
+          border-color: lighten($warning, 20);
+          color: #fff;
+        }
+      }
+    }
+    &.is-success {
+      background-color: lighten($success, 20);
+      &.is-outlined {
+        border-color: lighten($success, 20);
+        color: lighten($success, 20);
+        &:hover {
+          background-color: lighten($success, 20);
+          border-color: lighten($success, 20);
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
 @mixin transition($args...) {
   -webkit-transition: $args;
   -moz-transition: $args;

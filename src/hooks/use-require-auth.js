@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import useRouter from './use-router';
-import useAuth from './use-auth';
+import { useAuth } from './use-auth';
 
 const useRequireAuth = (redirectUrl = '/signup') => {
   const auth = useAuth();

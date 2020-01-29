@@ -27,6 +27,9 @@ input.button {
 .input {
   caret-color: $primary;
   @include transition(all 0.3s ease);
+  &::placeholder {
+    color: $dark;
+  }
 
   &.has-button {
     height: calc(2.25rem + 4px);
