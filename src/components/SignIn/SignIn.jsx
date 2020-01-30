@@ -2,21 +2,17 @@ import React, { useContext } from 'react';
 import { Form } from 'react-final-form';
 import { Link } from 'react-router-dom';
 
-import { useAuth } from 'auth/context/use-auth';
-import AlertContext from 'common/context/alert';
-import FormInput from 'common/components/FormInput/FormInput';
+import { useAuth } from 'context/use-auth';
+import AlertContext from 'context/alert';
+import FormInput from 'components/FormInput/FormInput';
 
 const SignIn = () => {
   const auth = useAuth();
   const { setAlert } = useContext(AlertContext);
 
   const onSubmit = async ({ email, password }) => {
-    const errors = await auth.signin(email, password);
-    if (!errors.length) {
-      setAlert('Login successful.', 'success');
-    } else {
-      errors.forEach((e) => setAlert(e, 'danger'));
-    }
+    const user = await auth.signin(email, password);
+    user && setAlert('Login successful.', 'primary');
   };
 
   return (

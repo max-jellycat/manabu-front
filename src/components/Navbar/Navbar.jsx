@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from 'auth/context/use-auth';
+import { useAuth } from 'context/use-auth';
 
 const Navbar = () => {
   const { user, signout } = useAuth();
@@ -13,7 +13,7 @@ const Navbar = () => {
     >
       <div className="navbar-brand">
         <Link className="navbar-item" to="/">
-          MyBea
+          React Skeleton
         </Link>
 
         <a role="button" aria-label="menu" aria-expanded="false">
@@ -28,7 +28,7 @@ const Navbar = () => {
             <>
               <div className="navbar-item">
                 <span>Hello</span>
-                <span className="ml has-text-weight-bold">{user.name}</span>
+                <span className="ml has-text-weight-bold">{user.displayName}</span>
               </div>
               <div className="navbar-item">
                 <a href="#" className="button is-danger is-outlined" onClick={() => signout()}>

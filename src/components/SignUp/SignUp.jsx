@@ -1,27 +1,23 @@
 import React, { useContext } from 'react';
 import { Form } from 'react-final-form';
 import { Link } from 'react-router-dom';
-import { useAuth } from 'auth/context/use-auth';
-import FormInput from 'common/components/FormInput/FormInput';
+import { useAuth } from 'context/use-auth';
+import FormInput from 'components/FormInput/FormInput';
 
-import AlertContext from 'common/context/alert';
+import AlertContext from 'context/alert';
 
 const SignUp = () => {
   const auth = useAuth();
   const { setAlert } = useContext(AlertContext);
 
-  const onSubmit = ({
+  const onSubmit = async ({
     name, email, password, passwordConfirm,
   }) => {
     if (password !== passwordConfirm) {
       setAlert("Passwords don't match.", 'danger');
     } else {
-      const errors = auth.signup({ name, email, password });
-      if (!errors.length) {
-        setAlert('You are now logged in.', 'success');
-      } else {
-        errors.forEach((e) => setAlert(e, 'danger'));
-      }
+      const user = await auth.signup({ name, email, password });
+      user && setAlert('Login successful.', 'primary');
     }
   };
 

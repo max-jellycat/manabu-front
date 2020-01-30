@@ -4,25 +4,28 @@ import PropTypes from 'prop-types';
 const AlertContext = createContext();
 
 export const AlertProvider = ({ children }) => {
-  const [state, setState] = useState(null);
+  const [alerts, setAlerts] = useState([]);
 
   const setAlert = (message, type) => {
-    setState({
-      message,
-      type,
-    });
+    setAlerts([
+      ...alerts,
+      {
+        message,
+        type,
+      },
+    ]);
   };
 
-  const clearAlert = () => {
-    setState(null);
+  const clearAlerts = () => {
+    setAlerts([]);
   };
 
   return (
     <AlertContext.Provider
       value={{
-        alert: state,
+        alerts,
         setAlert,
-        clearAlert,
+        clearAlerts,
       }}
     >
       {children}
