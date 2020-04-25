@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from 'context/use-auth';
+
+import useAuth from 'common/contexts/auth';
 
 const Navbar = () => {
   const { user, signout } = useAuth();

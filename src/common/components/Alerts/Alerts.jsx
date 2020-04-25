@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import AlertContext from 'context/alert';
+import useAlert from 'common/contexts/alerts';
 
 const Alerts = () => {
-  const { alerts, clearAlerts } = useContext(AlertContext);
+  const { alerts, clearAlerts } = useAlert();
   return (
     <section className="alerts">
       {alerts.length > 0 && alerts.map((alert, index) => (

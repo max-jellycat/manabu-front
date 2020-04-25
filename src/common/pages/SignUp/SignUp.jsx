@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Form } from 'react-final-form';
 import { Link } from 'react-router-dom';
-import { useAuth } from 'context/use-auth';
-import FormInput from 'components/FormInput/FormInput';
 
-import AlertContext from 'context/alert';
+import useAuth from 'common/contexts/auth';
+import useAlert from 'common/contexts/alerts';
+import FormInput from 'common/components/FormInput/FormInput';
 
 const SignUp = () => {
   const auth = useAuth();
-  const { setAlert } = useContext(AlertContext);
+  const { setAlert } = useAlert();
 
   const onSubmit = async ({
     name, email, password, passwordConfirm,
@@ -22,7 +22,7 @@ const SignUp = () => {
   };
 
   return (
-    <section className="section register-page">
+    <section className="section full-page form-page">
       <Form
         onSubmit={onSubmit}
         initialValues={{

@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Form } from 'react-final-form';
 import { Link } from 'react-router-dom';
 
-import { useAuth } from 'context/use-auth';
-import AlertContext from 'context/alert';
-import FormInput from 'components/FormInput/FormInput';
+import useAuth from 'common/contexts/auth';
+import useAlert from 'common/contexts/alerts';
+import FormInput from 'common/components/FormInput/FormInput';
 
 const SignIn = () => {
   const auth = useAuth();
-  const { setAlert } = useContext(AlertContext);
+  const { setAlert } = useAlert;
 
   const onSubmit = async ({ email, password }) => {
     const user = await auth.signin(email, password);
@@ -16,7 +16,7 @@ const SignIn = () => {
   };
 
   return (
-    <section className="section login-page">
+    <section className="section full-page form-page">
       <Form
         onSubmit={onSubmit}
         initialValues={{ email: '', password: '' }}
