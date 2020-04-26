@@ -15,36 +15,50 @@ export const AuthProvider = ({ children }) => {
   const { setAlert } = useAlert();
   const router = useRouter();
 
-  const signin = async (email, password) => {
+  const socialSignIn = async (provider, search) => {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/auth/${provider}/callback${search}`);
+    const resJson = await res.json();
+    window.localStorage.setItem('jwt', resJson.jwt);
+    setUser(resJson.user);
+    router.push('/dashboard');
+  };
+
+  const login = async (email, password) => {
     const payload = {
       identifier: email,
       password,
     };
 
-    const res = await fetch(`${process.env.REACT_APP_API_URL}/auth/local`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    });
+    try {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/auth/local`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
 
-    if (res.ok) {
-      const resJson = await res.json();
+      if (res.ok) {
+        const resJson = await res.json();
 
-      window.localStorage.setItem('jwt', resJson.jwt);
-      setUser(resJson.user);
-      router.push('/');
-    } else {
-      // TODO  fix : error not displayed
-      setAlert(t('auth.badCredentials'), 'danger');
+        if (resJson.user.confirmed) {
+          window.localStorage.setItem('jwt', resJson.jwt);
+          setUser(resJson.user);
+          router.push('/dashboard');
+        } else {
+          setAlert(t('auth.notConfirmed'), 'warning');
+        }
+      } else {
+        setAlert(t('auth.badCredentials'), 'danger');
+      }
+    } catch (err) {
+      setAlert(err.message, 'danger');
     }
   };
 
-  const signup = async ({ name, email, password }) => {
+  const register = async ({ name, email, password }) => {
     const payload = {
-      username: email,
-      name,
+      username: name,
       email,
       password,
     };
@@ -58,24 +72,25 @@ export const AuthProvider = ({ children }) => {
     });
 
     if (res.ok) {
-      const user = await res.json();
-
-      setUser(user);
-      router.push('/');
+      setAlert(t('auth.emailSent'), 'success');
+      router.push('/login');
+    } else {
+      setAlert(t('auth.badCredentials'), 'danger');
     }
-    // TODO handle register error
   };
 
-  const signout = () => {
+  const logout = () => {
     setUser(null);
+    window.localStorage.setItem('jwt', null);
   };
 
   return (
     <AuthContext.Provider value={{
       user,
-      signin,
-      signup,
-      signout,
+      login,
+      socialSignIn,
+      register,
+      logout,
     }}
     >
       {children}

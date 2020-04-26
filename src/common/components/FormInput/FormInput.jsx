@@ -127,9 +127,7 @@ const FormInput = ({
                 {...extra}
                 className={className}
                 onChange={(val, row) => {
-                  console.log('toto1');
                   onChange(val, row);
-                  console.log('toto2');
                   input.onChange(val);
                 }}
               >

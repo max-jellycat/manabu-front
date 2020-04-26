@@ -12,6 +12,30 @@
   font-family: $family-japanese;
 }
 
+.button {
+  &.is-google {
+    background-color: $google;
+    border-color: $google;
+    color: $white;
+    &:hover {
+      background-color: darken($google, 10%);
+      border-color: darken($google, 10%);
+      color: $white;
+    }
+  }
+  &.is-facebook {
+    background-color: $facebook;
+    border-color: $facebook;
+    color: $white;
+    &:hover {
+      background-color: darken($facebook, 10%);
+      border-color: darken($facebook, 10%);
+      color: $white;
+    }
+  }
+}
+
+
 h1.title {
   color: $primary;
 }

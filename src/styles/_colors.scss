@@ -1,0 +1,68 @@
+button.is-primary {
+  border: 1px solid $primary;
+  background-color: $primary;
+  &.is-outlined {
+    background-color: transparent;
+    border-color: $primary;
+    color: $primary;
+  }
+  @include is-transparent($primary);
+  @include transition(all 0.3s);
+}
+button.is-danger {
+  border: 1px solid $danger;
+  background-color: $danger;
+  &.is-outlined {
+    background-color: transparent;
+    border-color: $danger;
+    color: $danger;
+  }
+  @include is-transparent($danger);
+  @include transition(all 0.3s);
+}
+button.is-warning {
+  border: 1px solid $warning;
+  background-color: $warning;
+  &.is-outlined {
+    background-color: transparent;
+    border-color: $warning;
+    color: $warning;
+  }
+  @include is-transparent($warning);
+  @include transition(all 0.3s);
+}
+button.is-success {
+  border: 1px solid $success;
+  background-color: $success;
+  &.is-outlined {
+    background-color: transparent;
+    border-color: $success;
+    color: $success;
+  }
+  @include is-transparent($success);
+  @include transition(all 0.3s);
+}
+button.is-dark {
+  border: 1px solid $dark;
+  background-color: $dark;
+  color: $light;
+  &.is-outlined {
+    background-color: transparent;
+    border-color: $dark;
+    color: $dark;
+  }
+  @include is-transparent($dark);
+  @include transition(all 0.3s);
+}
+button.is-light {
+  border: 1px solid $light;
+  background-color: $light;
+  color: $dark;
+  &.is-outlined {
+    background-color: transparent;
+    border-color: $light;
+    color: $light;
+  }
+  @include is-transparent($light);
+  @include transition(all 0.3s);
+}

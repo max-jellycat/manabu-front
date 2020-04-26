@@ -7,7 +7,7 @@ import useAlert from 'common/contexts/alerts';
 import FormInput from 'common/components/FormInput/FormInput';
 
 const SignUp = () => {
-  const auth = useAuth();
+  const { register } = useAuth();
   const { setAlert } = useAlert();
 
   const onSubmit = async ({
@@ -16,7 +16,7 @@ const SignUp = () => {
     if (password !== passwordConfirm) {
       setAlert("Passwords don't match.", 'danger');
     } else {
-      const user = await auth.signup({ name, email, password });
+      const user = await register({ name, email, password });
       user && setAlert('Login successful.', 'primary');
     }
   };

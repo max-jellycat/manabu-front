@@ -3,6 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import useAuth from 'common/contexts/auth';
+import Page404 from 'common/pages/404';
 
 const getUserRoutes = (routes, user) => routes.map((route, key) => {
   let { component } = route;
@@ -13,7 +14,7 @@ const getUserRoutes = (routes, user) => routes.map((route, key) => {
   if (roles) {
     if (user) {
       if (!roles.includes(user.role.name)) {
-        component = <p>404</p>;
+        component = Page404;
       }
     } else {
       component = () => (<Redirect to="/login" />);
@@ -24,8 +25,8 @@ const getUserRoutes = (routes, user) => routes.map((route, key) => {
 });
 
 const Routes = ({ routes }) => {
-  const auth = useAuth();
-  const userRoutes = useMemo(() => getUserRoutes(routes, auth.user), [routes, auth.user]);
+  const { user } = useAuth();
+  const userRoutes = useMemo(() => getUserRoutes(routes, user), [routes, user]);
 
   return userRoutes;
 };

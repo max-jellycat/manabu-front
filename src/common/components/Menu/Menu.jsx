@@ -9,7 +9,7 @@ import useMenu from 'common/contexts/menu';
 const Menu = () => {
   const { t } = useTranslation();
   const { menuActive } = useMenu();
-  const { user, signout } = useAuth();
+  const { user, logout } = useAuth();
 
   return (
     <aside data-test="component-aside" className={`menu is-dark ${menuActive && 'is-open'}`}>
@@ -17,7 +17,7 @@ const Menu = () => {
         <div className="menu-user">
           {user && (
             <>
-              <button className="menu-user--logout button is-danger is-transparent" onClick={() => signout()}>
+              <button className="menu-user--logout button is-danger is-transparent" onClick={() => logout()}>
                 <span className="icon">
                   <i className="fas fa-power-off" />
                 </span>

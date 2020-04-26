@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import useAuth from 'common/contexts/auth';
 
 const Navbar = () => {
-  const { user, signout } = useAuth();
+  const { user, logout } = useAuth();
   return (
     <nav
       className="navbar is-dark is-fixed-top"
@@ -32,7 +32,7 @@ const Navbar = () => {
                 <span className="ml has-text-weight-bold">{user.displayName}</span>
               </div>
               <div className="navbar-item">
-                <a href="#" className="button is-danger is-outlined" onClick={() => signout()}>
+                <a href="#" className="button is-danger is-outlined" onClick={() => logout()}>
                   <span className="icon">
                     <i className="fas fa-sign-out-alt" />
                   </span>
