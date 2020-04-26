@@ -6,7 +6,7 @@ import WordForm from 'words/components/WordForm';
 
 const WordsPage = () => {
   const { t } = useTranslation();
-  const [wordToEdit, setWordToEdit] = useState(4);
+  const [wordToEdit, setWordToEdit] = useState(null);
 
   return (
     <>
