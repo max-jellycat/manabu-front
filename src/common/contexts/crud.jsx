@@ -1,22 +1,22 @@
 import React, {
-  useContext, useState, useCallback,
+  useState, useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
 
 import fetchJSON from 'common/utils/fetchJSON';
 
-import AlertsContext from './alerts';
+import useAlert from './alerts';
 
 export const ContextProvider = ({
   url, context: Context, children, value = {},
 }) => {
+  const { setAlert } = useAlert();
   const [item, setItem] = useState(null);
   const [items, setItems] = useState([]);
   const [error, setError] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
   const [pageCount, setPageCount] = useState(0);
   const [filters, setFilters] = useState({});
-  const { setAlert } = useContext(AlertsContext);
 
   const setFilter = useCallback((key, value) => {
     setFilters((prevFilters) => {
@@ -86,12 +86,12 @@ export const ContextProvider = ({
     }
   }, [setAlert, url]);
 
-  const save = useCallback(async (payload) => {
+  const save = useCallback(async (payload, shouldSetItem = false) => {
     setIsFetching(true);
     try {
       const res = await fetchJSON({ url, method: 'POST', payload });
 
-      setItem(res);
+      shouldSetItem && setItem(res);
       return res;
     } catch (e) {
       setAlert(e.message, 'danger');
@@ -101,19 +101,12 @@ export const ContextProvider = ({
     }
   }, [url, setAlert]);
 
-  const update = useCallback(async (id, payload, shouldSetItem = true) => {
+  const update = useCallback(async (id, payload, shouldSetItem = false) => {
     setIsFetching(true);
     try {
       const res = await fetchJSON({ url: `${url}/${id}`, method: 'PUT', payload });
 
-      /**
-       * 1. Boolean to controll whether or not the item should be reset with the PUT response
-       * 2. Set to false to prevent page crashing when page needs to use nested elements of the object
-       * because res does contain populated nested items.
-       */
-      if (shouldSetItem) {
-        setItem(res);
-      }
+      shouldSetItem && setItem(res);
       return res;
     } catch (e) {
       setAlert(e.message, 'danger');
@@ -144,6 +137,7 @@ export const ContextProvider = ({
       save,
       items,
       item,
+      setItem,
       error,
       isFetching,
       pageCount,

@@ -22,5 +22,19 @@
   },
   "dashboard": {
     "dashboardTitle": "Dashboard"
+  },
+  "words": {
+    "wordsTitle": "Words",
+    "native": "Translation",
+    "furigana": "Furigana",
+    "kanji": "Kanji",
+    "roumaji": "Rōmaji",
+    "addWord": "Add word",
+    "successAdd": "Word {{ word }} has been created.",
+    "editWord": "Edit word",
+    "successEdit": "Word {{ word }} has been updated."
+  },
+  "flashCards": {
+    "flashCardsTitle": "Flash Cards"
   }
 }

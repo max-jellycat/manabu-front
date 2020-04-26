@@ -22,5 +22,19 @@
   },
   "dashboard": {
     "dashboardTitle": "Tableau de bord"
+  },
+  "words": {
+    "wordsTitle": "Vocabulaire",
+    "native": "Traduction",
+    "furigana": "Furigana",
+    "kanji": "Kanji",
+    "roumaji": "Rōmaji",
+    "addWord": "Ajouter un mot",
+    "successAdd": "Le mot {{ word }} a bien été ajouté.",
+    "editWord": "Editer le mot",
+    "successEdit": "Le mot {{ word }} a bien été mis à jour."
+  },
+  "flashCards": {
+    "flashCardsTitle": "Flash Cards"
   }
 }

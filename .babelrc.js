@@ -7,5 +7,7 @@ module.exports = {
         common: './common',
       },
     }],
+    '@babel/plugin-proposal-nullish-coalescing-operator',
+    '@babel/plugin-proposal-optional-chaining',
   ],
 };

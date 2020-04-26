@@ -16,6 +16,10 @@ body {
   font-family: $family-japanese;
 }
 
+.icon {
+  font-size: 1rem;
+}
+
 .button {
   &.is-google {
     background-color: $google;

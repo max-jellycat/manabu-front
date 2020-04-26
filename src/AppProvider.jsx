@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { AlertsProvider } from 'common/contexts/alerts';
 import { AuthProvider } from 'common/contexts/auth';
 import { MenuProvider } from 'common/contexts/menu';
+import { WordsProvider } from 'words/contexts/words';
 
 import Loader from 'common/components/Loader/Loader';
 
@@ -12,7 +13,9 @@ const AppProvider = ({ children }) => (
     <AlertsProvider>
       <AuthProvider>
         <MenuProvider>
-          {children}
+          <WordsProvider>
+            {children}
+          </WordsProvider>
         </MenuProvider>
       </AuthProvider>
     </AlertsProvider>

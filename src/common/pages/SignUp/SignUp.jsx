@@ -36,24 +36,28 @@ const SignUp = () => {
                 name="name"
                 placeholder={t('auth.name')}
                 icon="user"
+                required
               />
               <FormInput
                 type="email"
                 name="email"
                 placeholder={t('auth.email')}
                 icon="envelope"
+                required
               />
               <FormInput
                 type="password"
                 name="password"
                 placeholder={t('auth.password')}
                 icon="lock"
+                required
               />
               <FormInput
                 type="password"
                 name="passwordConfirm"
                 placeholder={t('auth.confirmPassword')}
                 icon="check"
+                required
               />
               <FormInput
                 type="submit"

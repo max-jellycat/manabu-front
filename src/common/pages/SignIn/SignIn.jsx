@@ -29,12 +29,14 @@ const SignIn = () => {
                 name="email"
                 placeholder={t('auth.email')}
                 icon="envelope"
+                required
               />
               <FormInput
                 type="password"
                 name="password"
                 placeholder={t('auth.password')}
                 icon="lock"
+                required
               />
               <FormInput
                 type="submit"
