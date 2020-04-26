@@ -18,7 +18,7 @@ const Alert = ({ alert, clearAlert }) => {
       classNames="alert"
       onExited={() => clearAlert(alert.id)}
     >
-      <article className={`notification is-${alert.type}`}>
+      <article className={`alert notification is-${alert.type}`}>
         <button type="button" className="delete" onClick={() => setShowAlert(false)}>
           <span className="icon">
             <i className="fas fa-times" />

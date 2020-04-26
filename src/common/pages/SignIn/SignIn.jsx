@@ -1,18 +1,17 @@
 import React from 'react';
 import { Form } from 'react-final-form';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import useAuth from 'common/contexts/auth';
-import useAlert from 'common/contexts/alerts';
 import FormInput from 'common/components/FormInput/FormInput';
 
 const SignIn = () => {
+  const { t } = useTranslation();
   const { login } = useAuth();
-  const { setAlert } = useAlert;
 
   const onSubmit = async ({ email, password }) => {
-    const user = await login(email, password);
-    user && setAlert('Login successful.', 'primary');
+    await login(email, password);
   };
 
   const providers = ['google', 'facebook'];
@@ -28,18 +27,18 @@ const SignIn = () => {
               <FormInput
                 type="email"
                 name="email"
-                placeholder="Email address"
+                placeholder={t('auth.email')}
                 icon="envelope"
               />
               <FormInput
                 type="password"
                 name="password"
-                placeholder="Password"
+                placeholder={t('auth.password')}
                 icon="lock"
               />
               <FormInput
                 type="submit"
-                placeholder="Sign in"
+                placeholder={t('auth.login')}
                 icon="sign-in-alt"
                 disabled={submitting || pristine}
               />
@@ -54,13 +53,13 @@ const SignIn = () => {
                   <span className="icon">
                     <i className={`fab fa-${p}`} />
                   </span>
-                  <span style={{ textTransform: 'capitalize' }}>{`Connect with ${p}`}</span>
+                  <span style={{ textTransform: 'capitalize' }}>{t('auth.socialConnect', { provider: p })}</span>
                 </a>
               ))}
             </div>
             <p className="mt-1">
-              <span>Already have an account ? </span>
-              <Link to="/register" className="lead">Sign up here.</Link>
+              <span className="mr">{t('auth.notSignedUp')}</span>
+              <Link to="/register" className="lead">{t('auth.signUpLink')}</Link>
             </p>
           </>
         )}

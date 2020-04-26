@@ -1,3 +1,26 @@
 {
-  
+  "common": {
+    "fieldRequired": "Ce champ est requis."
+  },
+  "auth": {
+    "login": "Se connecter",
+    "register": "S'enregistrer",
+    "alreadySignedUp": "Déjà enregistré ?",
+    "notSignedUp": "Pas encore de compte ?",
+    "signUpLink": "S'enregistrer",
+    "loginLink": "Se connecter",
+    "name": "Nom",
+    "email": "Adresse email",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "noPasswordsMatch": "Les mots de passe ne correspondent pas.",
+    "loginSuccess": "Vous êtes maintenant connecté(e).",
+    "registerSuccess": "Votre compte a bien été créé. Un email de confirmation a été envoyé à {{email}}.",
+    "socialConnect": "Se connecter avec {{ provider }}",
+    "notConfirmed": "Votre compte n'a pas encore été validé. Merci de consulter votre messagerie.",
+    "badCredentials": "L'adresse email et le mot de passe ne correspondent pas."
+  },
+  "dashboard": {
+    "dashboardTitle": "Tableau de bord"
+  }
 }
