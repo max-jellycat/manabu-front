@@ -20,6 +20,7 @@ export const AuthProvider = ({ children }) => {
     const resJson = await res.json();
     window.localStorage.setItem('jwt', resJson.jwt);
     setUser(resJson.user);
+    setAlert(t('auth.loginSuccess'), 'success');
     router.push('/dashboard');
   };
 
@@ -44,6 +45,7 @@ export const AuthProvider = ({ children }) => {
         if (resJson.user.confirmed) {
           window.localStorage.setItem('jwt', resJson.jwt);
           setUser(resJson.user);
+          setAlert(t('auth.loginSuccess'), 'success');
           router.push('/dashboard');
         } else {
           setAlert(t('auth.notConfirmed'), 'warning');
@@ -72,7 +74,7 @@ export const AuthProvider = ({ children }) => {
     });
 
     if (res.ok) {
-      setAlert(t('auth.emailSent'), 'success');
+      setAlert(t('auth.registerSuccess'), 'success');
       router.push('/login');
     } else {
       setAlert(t('auth.badCredentials'), 'danger');

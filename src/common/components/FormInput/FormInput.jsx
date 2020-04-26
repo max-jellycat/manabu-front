@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
 import { useTranslation } from 'react-i18next';
+import { Icon } from '@iconify/react';
+import warningIcon from '@iconify/icons-ion/warning';
 
 import Select from 'common/components/Select/Select';
-
 
 const Input = ({
   type, icon, children, ...otherProps
@@ -17,7 +18,7 @@ const Input = ({
         <button className="button is-success" type="submit" disabled={otherProps.disabled}>
           {icon && (
             <span className="icon">
-              <i className={`fas fa-${icon}`} />
+              <Icon icon={icon} />
             </span>
           )}
           <span>{otherProps.placeholder}</span>
@@ -53,13 +54,13 @@ const Input = ({
 
 Input.propTypes = {
   type: PropTypes.string,
-  icon: PropTypes.string,
+  icon: PropTypes.object,
   children: PropTypes.element,
 };
 
 Input.defaultProps = {
   type: 'text',
-  icon: '',
+  icon: null,
   children: null,
 };
 
@@ -135,12 +136,12 @@ const FormInput = ({
               </Input>
               {icon && (
                 <span className="icon is-small is-left">
-                  <i className={`fas fa-${icon}`} />
+                  <Icon icon={icon} />
                 </span>
               )}
               {icon && meta.touched && meta.error && (
-                <span className="icon is-small is-right">
-                  <i className="fas fa-exclamation-triangle" />
+                <span className="icon error-icon is-small is-right">
+                  <Icon icon={warningIcon} />
                 </span>
               )}
             </div>
@@ -153,7 +154,7 @@ const FormInput = ({
 };
 
 FormInput.propTypes = {
-  icon: PropTypes.string,
+  icon: PropTypes.object,
   type: PropTypes.string,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
@@ -164,7 +165,7 @@ FormInput.propTypes = {
 
 FormInput.defaultProps = {
   type: 'text',
-  icon: '',
+  icon: null,
   placeholder: '',
   onChange() {},
   children: null,

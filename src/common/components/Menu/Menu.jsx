@@ -31,29 +31,35 @@ const Menu = () => {
             </>
           )}
         </div>
-        <Link className="menu-brand" to="/">
-          <img src="http://placehold.it/600x400" alt="Home" />
-        </Link>
+        <Link className="menu-brand" to="/" style={{ backgroundImage: 'url(http://placehold.it/600x400)' }} />
         <div className="menu-header--mask" />
       </div>
       <div className="menu-container">
         <>
           <p className="menu-label">
-            <span className="icon">
-              <i className="fas fa-card" />
-            </span>
-            <span>{t('menu.flashCards')}</span>
+            <Link to="/dashboard">
+              <span className="icon mr">
+                <i className="fas fa-tachometer-alt" />
+              </span>
+              <span>{t('dashboard.dashboardTitle')}</span>
+            </Link>
           </p>
-          <ul className="menu-list">
-            <li>
-              <Link to="/flash-cards">
-                <span className="icon mr">
-                  <i className="fas fa-card" />
-                </span>
-                <span>{t('menu.flashCards')}</span>
-              </Link>
-            </li>
-          </ul>
+          <p className="menu-label">
+            <Link to="/words">
+              <span className="icon mr">
+                <i className="fas fa-heading" />
+              </span>
+              <span>{t('words.wordsTitle')}</span>
+            </Link>
+          </p>
+          <p className="menu-label">
+            <Link to="/flash-cards">
+              <span className="icon mr">
+                <i className="fas fa-dice" />
+              </span>
+              <span>{t('flashCards.flashCardsTitle')}</span>
+            </Link>
+          </p>
         </>
       </div>
     </aside>

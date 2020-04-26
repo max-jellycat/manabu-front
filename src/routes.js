@@ -4,10 +4,12 @@ import SignIn from 'common/pages/SignIn/SignIn';
 import Dashboard from 'dashboard/pages/Dashboard';
 import Page404 from 'common/pages/404';
 import SocialConnect from 'common/pages/SocialConnect';
+import WordsPage from 'words/pages/WordsPage';
 
 const routes = [
   { path: '/', component: Home },
   { path: '/dashboard', roles: ['Authenticated', 'Admin'], component: Dashboard },
+  { path: '/words', roles: ['Authenticated', 'Admin'], component: WordsPage },
   { path: '/login', component: SignIn },
   { path: '/register', component: SignUp },
   { path: '/connect/:provider', component: SocialConnect },

@@ -1,12 +1,14 @@
 import React from 'react';
 import { Form } from 'react-final-form';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import useAuth from 'common/contexts/auth';
 import useAlert from 'common/contexts/alerts';
 import FormInput from 'common/components/FormInput/FormInput';
 
 const SignUp = () => {
+  const { t } = useTranslation();
   const { register } = useAuth();
   const { setAlert } = useAlert();
 
@@ -14,10 +16,9 @@ const SignUp = () => {
     name, email, password, passwordConfirm,
   }) => {
     if (password !== passwordConfirm) {
-      setAlert("Passwords don't match.", 'danger');
+      setAlert(t('auth.noPasswordsMatch'), 'danger');
     } else {
-      const user = await register({ name, email, password });
-      user && setAlert('Login successful.', 'primary');
+      await register({ name, email, password });
     }
   };
 
@@ -33,37 +34,41 @@ const SignUp = () => {
             <form onSubmit={handleSubmit}>
               <FormInput
                 name="name"
-                placeholder="Name"
+                placeholder={t('auth.name')}
                 icon="user"
+                required
               />
               <FormInput
                 type="email"
                 name="email"
-                placeholder="Email address"
+                placeholder={t('auth.email')}
                 icon="envelope"
+                required
               />
               <FormInput
                 type="password"
                 name="password"
-                placeholder="Password"
+                placeholder={t('auth.password')}
                 icon="lock"
+                required
               />
               <FormInput
                 type="password"
                 name="passwordConfirm"
-                placeholder="Password Confirmation"
+                placeholder={t('auth.confirmPassword')}
                 icon="check"
+                required
               />
               <FormInput
                 type="submit"
-                placeholder="Register"
+                placeholder={t('auth.register')}
                 icon="user-plus"
                 disabled={submitting || pristine}
               />
             </form>
             <p className="mt-1">
-              <span>Already have an account ? </span>
-              <Link to="/login" className="lead">Sign in here.</Link>
+              <span className="mr">{t('auth.alreadySignedUp')}</span>
+              <Link to="/login" className="lead">{t('auth.loginLink')}</Link>
             </p>
           </>
         )}

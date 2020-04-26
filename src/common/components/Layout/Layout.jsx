@@ -12,21 +12,21 @@ const Layout = ({ children }) => {
   const { menuActive } = useMenu();
 
   return user ? (
-    <>
+    <div className="layout">
       <Menu />
       <main className={`${menuActive && 'menu-open'}`}>
         <Alerts />
         {children}
       </main>
-    </>
+    </div>
   ) : (
-    <>
+    <div className="layout">
       <Navbar />
-      <section className="full-page">
+      <main className="full-page">
         <Alerts />
         {children}
-      </section>
-    </>
+      </main>
+    </div>
   );
 };
 

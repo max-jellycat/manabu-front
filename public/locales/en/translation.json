@@ -1,3 +1,40 @@
 {
-  
+  "common": {
+    "fieldRequired": "This field is required"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "alreadySignedUp": "Already signed up?",
+    "notSignedUp": "Don't have an account?",
+    "signUpLink": "Register here",
+    "loginLink": "Login here",
+    "name": "Name",
+    "email": "Email address",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "noPasswordsMatch": "Passwords do not match.",
+    "loginSuccess": "Login successful",
+    "registerSuccess": "Your account has been created. A confirmation email has been sent to {{email}}.",
+    "socialConnect": "Connect with {{ provider }}",
+    "notConfirmed": "Your account is not confirmed yet. Please check your inbox.",
+    "badCredentials": "The email address and the password do not match."
+  },
+  "dashboard": {
+    "dashboardTitle": "Dashboard"
+  },
+  "words": {
+    "wordsTitle": "Words",
+    "native": "Translation",
+    "furigana": "Furigana",
+    "kanji": "Kanji",
+    "roumaji": "Rōmaji",
+    "addWord": "Add word",
+    "successAdd": "Word {{ word }} has been created.",
+    "editWord": "Edit word",
+    "successEdit": "Word {{ word }} has been updated."
+  },
+  "flashCards": {
+    "flashCardsTitle": "Flash Cards"
+  }
 }

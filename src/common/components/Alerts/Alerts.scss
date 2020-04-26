@@ -1,0 +1,48 @@
+
+
+.alerts {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.alert {
+  width: 80%;
+  z-index: 10;
+
+  &.notification {
+    &.is-primary {
+      background-color: $blueberry-light;
+    }
+    &.is-success {
+      background-color: $kiwi-light;
+    }
+    &.is-danger {
+      background-color: $raspberry-light;
+    }
+    &.is-warning {
+      background-color: $banana-light;
+    }
+  }
+}
+
+.alert-enter {
+  opacity: 0;
+}
+.alert-enter-active {
+  opacity: 1;
+  transition: opacity 600ms;
+}
+.alert-exit {
+  opacity: 1;
+}
+.alert-exit-active {
+  opacity: 0;
+  transition: opacity 600ms;
+}

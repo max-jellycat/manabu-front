@@ -43,6 +43,8 @@
     width: 8rem;
     height: 8rem;
     background-color: $light;
+    background-size: cover;
+    background-position: center center;
     border-radius: 50%;
     margin: 1.5rem auto 0;
     position: relative;
@@ -93,6 +95,10 @@
     i {
       color: $primary;
       margin-right: 0.5rem;
+    }
+
+    a {
+      color: $light;
     }
   }
 
