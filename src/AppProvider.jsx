@@ -5,6 +5,7 @@ import { AlertsProvider } from 'common/contexts/alerts';
 import { AuthProvider } from 'common/contexts/auth';
 import { MenuProvider } from 'common/contexts/menu';
 import { WordsProvider } from 'words/contexts/words';
+import { TagsProvider } from 'words/contexts/tags';
 
 import Loader from 'common/components/Loader/Loader';
 
@@ -13,9 +14,11 @@ const AppProvider = ({ children }) => (
     <AlertsProvider>
       <AuthProvider>
         <MenuProvider>
-          <WordsProvider>
-            {children}
-          </WordsProvider>
+          <TagsProvider>
+            <WordsProvider>
+              {children}
+            </WordsProvider>
+          </TagsProvider>
         </MenuProvider>
       </AuthProvider>
     </AlertsProvider>

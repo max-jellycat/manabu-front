@@ -3,3 +3,13 @@
     color: $danger;
   }
 }
+
+.control {
+  &.has-icons-left {
+    .react-select-container  {
+      +.icon {
+        height: 2.4rem;
+      }
+    }
+  }
+}
