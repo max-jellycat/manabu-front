@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useAuth from 'common/contexts/auth';
 import Select from 'react-select/async-creatable';
 
 const TagSelect = ({
-  onChange, fetchItems, save, ...rest
+  onChange, value: ffValue, fetchItems, save, ...rest
 }) => {
   const { user } = useAuth();
   const [value, setValue] = useState([]);
@@ -96,7 +96,7 @@ const TagSelect = ({
       onChange={handleChange}
       onInputChange={handleInputChange}
       inputValue={inputValue}
-      value={value}
+      value={ffValue.length ? value : ffValue}
       styles={customSelectStyles}
     />
   );

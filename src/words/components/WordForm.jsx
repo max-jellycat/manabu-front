@@ -60,7 +60,8 @@ const WordForm = ({ wordId, setWordToEdit }) => {
       onSubmit={onSubmit}
       initialValues={word?.id ? {
         ...word,
-      } : {}}
+        tags: word.tags.map((t) => ({ label: t.label, value: t.id })),
+      } : { tags: [] }}
       render={({
         handleSubmit, submitting, pristine, values, form,
       }) => (
