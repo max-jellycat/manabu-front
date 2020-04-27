@@ -29,6 +29,7 @@
     "furigana": "Furigana",
     "kanji": "Kanji",
     "roumaji": "Rōmaji",
+    "tags": "Choose or type a tag...",
     "addWord": "Add word",
     "successAdd": "Word {{ word }} has been created.",
     "editWord": "Edit word",

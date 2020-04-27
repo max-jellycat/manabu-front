@@ -70,8 +70,6 @@ $dark: #353535;
 $info: #60a3bc;
 $link: $jelly;
 $warning: $banana;
-$grey-lighter: $cloud;
-$grey-darker: $licorice;
 
 /** 
  * Bulma components variables override
@@ -97,8 +95,8 @@ $notification-padding: 1rem 2rem 1rem 1.5rem;
 // Forms
 $control-border-width: 2px;
 $input-background-color: $white;
-$input-border-color: $grey-lighter;
-$input-hover-border-color: $grey-darker;
+$input-border-color: $cloud;
+$input-hover-border-color: $cloud-dark;
 $input-focus-color: $primary;
 $input-color: $dark;
 $input-shadow: none;

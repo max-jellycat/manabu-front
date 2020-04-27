@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -70,8 +70,8 @@ const Menu = () => {
       </div>
       <div className="menu-container">
         <>
-          {links.map((link) => (
-            <>
+          {links.map((link, index) => (
+            <Fragment key={`link-${index}`}>
               <p className="menu-label">
                 <Link to={link.link}>
                   <span className="icon mr">
@@ -83,8 +83,8 @@ const Menu = () => {
               {
               link.children?.length && (
                 <ul className="menu-list">
-                  {link.children.map((child) => (
-                    <li>
+                  {link.children.map((child, index) => (
+                    <li key={`child-link-${index}`}>
                       <Link to={child.link}>
                         <span className="icon mr">
                           <Icon icon={child.icon} />
@@ -96,7 +96,7 @@ const Menu = () => {
                 </ul>
               )
             }
-            </>
+            </Fragment>
           ))}
         </>
       </div>
