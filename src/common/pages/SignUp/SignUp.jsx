@@ -3,6 +3,12 @@ import { Form } from 'react-final-form';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+import personIcon from '@iconify/icons-ion/person';
+import mailIcon from '@iconify/icons-ion/mail';
+import lockClosed from '@iconify/icons-ion/lock-closed';
+import checkmarkIcon from '@iconify/icons-ion/checkmark';
+import personAdd from '@iconify/icons-ion/person-add';
+
 import useAuth from 'common/contexts/auth';
 import useAlert from 'common/contexts/alerts';
 import FormInput from 'common/components/FormInput/FormInput';
@@ -35,34 +41,34 @@ const SignUp = () => {
               <FormInput
                 name="name"
                 placeholder={t('auth.name')}
-                icon="user"
+                icon={personIcon}
                 required
               />
               <FormInput
                 type="email"
                 name="email"
                 placeholder={t('auth.email')}
-                icon="envelope"
+                icon={mailIcon}
                 required
               />
               <FormInput
                 type="password"
                 name="password"
                 placeholder={t('auth.password')}
-                icon="lock"
+                icon={lockClosed}
                 required
               />
               <FormInput
                 type="password"
                 name="passwordConfirm"
                 placeholder={t('auth.confirmPassword')}
-                icon="check"
+                icon={checkmarkIcon}
                 required
               />
               <FormInput
                 type="submit"
                 placeholder={t('auth.register')}
-                icon="user-plus"
+                icon={personAdd}
                 disabled={submitting || pristine}
               />
             </form>

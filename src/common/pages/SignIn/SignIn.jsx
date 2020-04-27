@@ -3,6 +3,14 @@ import { Form } from 'react-final-form';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+import { Icon } from '@iconify/react';
+import mailIcon from '@iconify/icons-ion/mail';
+import lockClosed from '@iconify/icons-ion/lock-closed';
+import logIn from '@iconify/icons-ion/log-in';
+import logoGoogle from '@iconify/icons-ion/logo-google';
+import logoFacebook from '@iconify/icons-ion/logo-facebook';
+
+
 import useAuth from 'common/contexts/auth';
 import FormInput from 'common/components/FormInput/FormInput';
 
@@ -14,7 +22,10 @@ const SignIn = () => {
     await login(email, password);
   };
 
-  const providers = ['google', 'facebook'];
+  const providers = [
+    { label: 'google', icon: logoGoogle },
+    { label: 'facebook', icon: logoFacebook },
+  ];
 
   return (
     <section className="section full-page form-page">
@@ -28,34 +39,34 @@ const SignIn = () => {
                 type="email"
                 name="email"
                 placeholder={t('auth.email')}
-                icon="envelope"
+                icon={mailIcon}
                 required
               />
               <FormInput
                 type="password"
                 name="password"
                 placeholder={t('auth.password')}
-                icon="lock"
+                icon={lockClosed}
                 required
               />
               <FormInput
                 type="submit"
                 placeholder={t('auth.login')}
-                icon="sign-in-alt"
+                icon={logIn}
                 disabled={submitting || pristine}
               />
             </form>
             <div className="social-buttons">
               {providers.map((p) => (
                 <a
-                  key={`connect-${p}`}
-                  href={`${process.env.REACT_APP_API_URL}/connect/${p}`}
-                  className={`button is-${p}`}
+                  key={`connect-${p.label}`}
+                  href={`${process.env.REACT_APP_API_URL}/connect/${p.label}`}
+                  className={`button is-${p.label}`}
                 >
                   <span className="icon">
-                    <i className={`fab fa-${p}`} />
+                    <Icon icon={p.icon} />
                   </span>
-                  <span style={{ textTransform: 'capitalize' }}>{t('auth.socialConnect', { provider: p })}</span>
+                  <span style={{ textTransform: 'capitalize' }}>{t('auth.socialConnect', { provider: p.label })}</span>
                 </a>
               ))}
             </div>

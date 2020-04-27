@@ -78,6 +78,8 @@
 
     &--name {
       font-size: 0.8rem;
+      display: flex;
+      align-items: center;
     }
   }
 
@@ -91,14 +93,20 @@
     text-transform: none;
     font-size: 1rem;
     letter-spacing: normal;
+    border-radius: $radius-small;
 
-    i {
+    svg {
       color: $primary;
-      margin-right: 0.5rem;
     }
 
     a {
       color: $light;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        color: $primary
+      }
     }
   }
 
@@ -106,8 +114,11 @@
     @include transition(0.3s);
     opacity: 0;
     font-size: 1rem;
+    color: $light;
+    display: flex;
+    align-items: center;
 
-    i {
+    svg {
       color: $primary;
     }
   }
